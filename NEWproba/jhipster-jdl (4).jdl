@@ -1,0 +1,10 @@
+
+application {
+  config {
+    baseName exampleApp1
+    applicationType microservice
+    serverPort 9001
+  }
+}
+
+
