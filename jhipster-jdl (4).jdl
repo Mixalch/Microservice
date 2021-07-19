@@ -5,9 +5,6 @@ application {
     applicationType microservice
     serverPort 9001
   }
-  entities *
 }
 
-entity A {
-}
 
