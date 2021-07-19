@@ -1,12 +1,13 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.domain.DTO;
 import com.mycompany.myapp.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/counter")
 public class BaseController {
 
     @Autowired
@@ -22,9 +23,14 @@ public class BaseController {
         return ResponseEntity.ok(service.decrement());
     }
 
-    @PostMapping ("/value/{value}")
-    public ResponseEntity setValue(@PathVariable("value") int value) {
-        service.setValue(value);
+    @GetMapping("/")
+    public ResponseEntity<String> getValue() {
+        return ResponseEntity.ok(service.getValue());
+    }
+
+    @PostMapping ("/")
+    public ResponseEntity setValue(@RequestBody DTO value) {
+        service.setValue(value.getValue());
         return ResponseEntity.ok("OK");
     }
 

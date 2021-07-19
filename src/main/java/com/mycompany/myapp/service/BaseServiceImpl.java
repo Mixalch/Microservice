@@ -30,8 +30,8 @@ public class BaseServiceImpl implements BaseService {
     }
 
     @Override
-    public void setValue(int value) {
-        repository.write(jedis, KEY, String.valueOf(value));
+    public void setValue(String value) {
+        repository.write(jedis, KEY, value);
     }
 
     private int calculate(Expression expression) {
@@ -44,5 +44,11 @@ public class BaseServiceImpl implements BaseService {
         repository.write(jedis, KEY, String.valueOf(number));
         return number;
     }
-
+    public String getValue() {
+        String value = repository.read(jedis, KEY);
+        if (value == null) {
+            value = "No value";
+        }
+        return value;
+    }
 }
